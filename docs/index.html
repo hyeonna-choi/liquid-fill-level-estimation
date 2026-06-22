@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Liquid Fill-Level Estimation for Dual-Transparent Labware Using Multi-View Synthetic Data.">
+  <meta name="keywords" content="Computer Vision, Vision Transformer, RGB-D, Synthetic Data, Transparent Objects, Physical AI">
+  <title>Liquid Fill-Level Estimation for Dual-Transparent Labware</title>
+
+  <!-- Open Graph (link preview when shared) -->
+  <meta property="og:title" content="Liquid Fill-Level Estimation for Dual-Transparent Labware"/>
+  <meta property="og:description" content="ViT-based liquid fill-level estimation from multi-view RGB-D using a fully synthetic Blender pipeline."/>
+  <meta property="og:type" content="website"/>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+</head>
+<body>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">
+            Liquid Fill-Level Estimation for Dual-Transparent Labware<br>Using Multi-View Synthetic Data
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="mailto:hynaaaai@gmail.com">Hyeonna Choi</a><sup>1,2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>1</sup>AI Robot Research Institute, KIMM&nbsp;&nbsp;</span>
+            <span class="author-block"><sup>2</sup>Jeju National University</span>
+          </div>
+
+          <!-- ===== LINK BUTTONS (fill in real URLs later) ===== -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Paper (optional) -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark is-disabled">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper (soon)</span>
+                </a>
+              </span>
+              <!-- Code -->
+              <span class="link-block">
+                <a href="https://github.com/hynaaaai/liquid-fill-level-estimation"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!-- Dataset -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="far fa-images"></i></span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TEASER ===================== -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- Replace with your result GIF/image: static/images/teaser.png -->
+      <img src="./static/images/teaser.png" alt="Teaser" class="teaser-img"
+           onerror="this.style.display='none';document.getElementById('teaser-ph').style.display='block';">
+      <div id="teaser-ph" class="placeholder" style="display:none;">
+        🖼️ <code>static/images/teaser.png</code> — multi-view RGB-D 입력 + 예측 fill-level 결과 이미지를 넣으세요
+      </div>
+      <h2 class="subtitle has-text-centered">
+        A fully synthetic, multi-view RGB-D pipeline estimates the liquid fill level
+        inside <span class="dnerf">dual-transparent</span> labware — where both the
+        container and the liquid are see-through.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABSTRACT ===================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Estimating how much liquid sits inside transparent laboratory glassware is a core
+            perception step for autonomous biological experiments, yet it is notoriously hard:
+            both the container and the liquid are transparent, refraction distorts the scene,
+            and manual annotation of fill levels is impractical at scale.
+          </p>
+          <p>
+            We build an <b>automated synthetic data generation pipeline</b> in Blender that renders
+            dual-transparent labware with randomized camera poses, HDRI backgrounds, and fill
+            levels from 1&ndash;100%, producing <b>multi-view RGB-D</b> images with exact ground-truth
+            labels for free. We then train a <b>Vision Transformer (ViT)</b> that fuses multi-view
+            RGB-D inputs to regress the liquid fill level, transferring from purely synthetic data.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== METHOD ===================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-3 has-text-centered">Method</h2>
+        <img src="./static/images/pipeline.png" alt="Pipeline" class="full-img"
+             onerror="this.style.display='none';document.getElementById('pipe-ph').style.display='block';">
+        <div id="pipe-ph" class="placeholder" style="display:none;">
+          🖼️ <code>static/images/pipeline.png</code> — 전체 파이프라인 구조도 (Blender 렌더링 → multi-view RGB-D → ViT → fill-level)
+        </div>
+        <div class="content has-text-justified" style="margin-top:1.5rem;">
+          <ol>
+            <li><b>Synthetic generation (Blender Python):</b> procedurally randomized camera poses,
+              HDRI lighting, labware geometry, and liquid fill levels (1&ndash;100%).</li>
+            <li><b>Multi-view RGB-D rendering:</b> paired color + depth from several viewpoints,
+              with pixel-perfect fill-level ground truth.</li>
+            <li><b>ViT estimator:</b> a transformer fuses the multi-view RGB-D tokens and regresses
+              the fill level.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESULTS ===================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Results</h2>
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <img src="./static/images/results.png" alt="Results" class="full-img"
+             onerror="this.style.display='none';document.getElementById('res-ph').style.display='block';">
+        <div id="res-ph" class="placeholder" style="display:none;">
+          🖼️ <code>static/images/results.png</code> — 정성 결과(예측 vs GT) / 정량 표를 넣으세요
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BIBTEX ===================== -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{choi2026liquidfill,
+  author = {Choi, Hyeonna},
+  title  = {Liquid Fill-Level Estimation for Dual-Transparent Labware
+            Using Multi-View Synthetic Data},
+  year   = {2026},
+  note   = {Project page: https://hynaaaai.github.io/liquid-fill-level-estimation}
+}</code></pre>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8 has-text-centered">
+        <p>
+          This page uses the
+          <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page template.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
