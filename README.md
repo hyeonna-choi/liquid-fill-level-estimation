@@ -3,7 +3,7 @@
 > ViT-based liquid fill-level estimation from **multi-view RGB-D**, trained on a fully
 > **synthetic Blender pipeline** for dual-transparent laboratory glassware.
 
-🔗 **Project page:** https://hynaaaai.github.io/liquid-fill-level-estimation
+🔗 **Project page:** https://hyeonna-choi.github.io/liquid-fill-level-estimation
 
 <!-- Add a teaser image once available:
 ![teaser](docs/static/images/teaser.png)
@@ -40,7 +40,7 @@ multi-view RGB-D estimator.
 
 ```bash
 # TODO: fill in once code is added
-git clone https://github.com/hynaaaai/liquid-fill-level-estimation.git
+git clone https://github.com/hyeonna-choi/liquid-fill-level-estimation.git
 cd liquid-fill-level-estimation
 pip install -r requirements.txt
 ```
